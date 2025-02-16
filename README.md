@@ -11,7 +11,7 @@ bounds of the audio file.  This script:
 - Renders an output video (x265) with the audio from the (cleaned) audio input file and the video (but not
   audio) from the video input file.
 
-The script assumes that python and ffmpeg are isntalled, along with several python packages. The Windows
+The script assumes that python and ffmpeg are installed, along with several python packages. The Windows
 installer script (which probably needs to be run as an administrator) will automatically install both
 python and ffmpeg using winget, and then will use pip to install the python packages. 
 
