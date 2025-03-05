@@ -38,8 +38,16 @@ def find_audio_offset(video_audio, external_audio):
     correlation = fftconvolve(video_y, wav_y[::-1], mode="full")
     best_offset = np.argmax(correlation) - len(wav_y)
 
+    # check that the correlation is good enough
+    if np.max(correlation) < 1000:
+        print("Error: No good alignment found.  Are you sure the audio and video match?")
+        sys.exit(1)
+
     # Convert sample index to seconds
     offset_seconds = best_offset / sr
+
+    print(f"  Best offset: {offset_seconds:.2f} seconds ({np.max(correlation):.0f} correlation)")
+
     return max(offset_seconds, 0)  # Ensure it's non-negative
 
 def get_audio_duration(audio_file):
